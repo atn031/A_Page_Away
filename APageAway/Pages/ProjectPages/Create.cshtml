@@ -1,0 +1,99 @@
+﻿@page
+@model APageAway.Pages.ProjectPages.CreateModel
+
+<h2 class="text-info">Create New Book In The List</h2>
+
+<div class="border container table-dark" style="padding:30px;">
+    <form enctype="multipart/form-data" method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-1">
+                <label asp-for="Book.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Name" class="form-control" placeholder="Enter Book Name Here" />
+            </div>
+            <span asp-validation-for="Book.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-1">
+                <label asp-for="Book.Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Author" class="form-control" placeholder="Enter Author of Book Here" />
+            </div>
+            <span asp-validation-for="Book.Author" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-1">
+                <label asp-for="Book.Artist"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Book.Artist" class="form-control" />
+                <small class="form-text text-primary ">This field is for the following type of books:Manga and Comics</small>
+            </div>
+            <span asp-validation-for="Book.Artist" class="text-success">This field can be left empty</span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 offset-md-1">
+
+                <label asp-for="Book.CurrentChapter"></label>
+                <input asp-for="Book.CurrentChapter" class="form-control" value="0" />
+                <span asp-validation-for="Book.CurrentChapter" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 ">
+                <label asp-for="Book.TotalChapters"></label>
+                <input asp-for="Book.TotalChapters" class="form-control" value="0" />
+                <span asp-validation-for="Book.TotalChapters" class="text-danger"></span>
+            </div>
+
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-1">
+                <label class="my-1 mr-2" asp-for="Book.Status"></label>
+            </div>
+            <div class="col-3">
+                <select class="custom-select my-1 mr-sm-2 " asp-for="Book.Status">
+                    <option selected>Choose Option...</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
+                    <option value="One Shot">One Shot</option>
+                </select>
+                <span asp-validation-for="Book.Status" class="text-success"></span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <div class="col-1">
+                <label asp-for="Book.ImageId"></label>
+            </div>
+            <div class="col-6">
+                <input type="File" asp-for="UploadedBookImage" />
+            </div>
+        </div>
+        <div class="form-group row">
+            @*<div class="col-2">
+                    <label asp-for="Book.Comments"></label>
+                </div>*@
+            <div class="col-md-6 offset-1">
+                <div class="input-group-text justify-content-center">Comments</div>
+                <textarea asp-for="Book.Comments" class="form-control" rows="4" placeholder="Enter any additional notes you need to make about this book here."></textarea>
+
+            </div>
+            <span asp-validation-for="Book.Comments" class="text-success">This can remain empty</span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-1">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back To Book List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
